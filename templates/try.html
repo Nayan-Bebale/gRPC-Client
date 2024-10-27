@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+	<head>
+		<title>Object detection hub</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/static.css">
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<h2>Object Detection</h2>
+				<p>Detect object with different models and compare it by<br />
+				ONE CLICK.</p>
+			</header>
+
+		<!-- check filed -->
+		<form action="/detect" method="POST" enctype="multipart/form-data">
+			<label for="image_url">Image URL or Path:</label><br>
+			<!-- <input type="text" id="image_url" name="image_url" required><br><br> -->
+
+			<!-- Upload Area -->
+			<div id="uploadArea" class="upload-area">
+				<!-- Header -->
+				<div class="upload-area__header">
+				<h1 class="upload-area__title">Upload your file</h1>
+				<p class="upload-area__paragraph">
+					File should be an image
+					<strong class="upload-area__tooltip">
+					Like
+					<span class="upload-area__tooltip-data"></span> <!-- Data Will be Comes From Js -->
+					</strong>
+				</p>
+				</div>
+				<!-- End Header -->
+
+				<!-- Drop Zoon -->
+				<div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
+				<span class="drop-zoon__icon">
+					<i class='bx bxs-file-image'></i>
+				</span>
+				<p class="drop-zoon__paragraph" style="font-size: large;">Drop your file here or Click to browse</p>
+				<span id="loadingText" class="drop-zoon__loading-text">Please Wait</span>
+				<img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image" draggable="false">
+				<input type="file" id="fileInput" class="drop-zoon__file-input" name="image_url" accept="image/*">
+				</div>
+
+
+				<!-- End Drop Zoon -->
+
+				<!-- File Details -->
+				<div id="fileDetails" class="upload-area__file-details file-details">
+				<h3 class="file-details__title">Uploaded File</h3>
+
+				<div id="uploadedFile" class="uploaded-file">
+					<div class="uploaded-file__icon-container">
+					<i class='bx bxs-file-blank uploaded-file__icon'></i>
+					<span class="uploaded-file__icon-text"></span> <!-- Data Will be Comes From Js -->
+					</div>
+
+					<div id="uploadedFileInfo" class="uploaded-file__info">
+					<span class="uploaded-file__name">Proejct 1</span>
+					<span class="uploaded-file__counter">0%</span>
+					</div>
+				</div>
+				</div>
+				<!-- End File Details -->
+			</div>
+			<!-- End Upload Area -->
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+			<br>
+			<button type="submit" style="height: auto; min-height: 70px; font-size: larger;">Detect Objects</button>
+		</form>
+		<!-- Signup Form -->
+			<!-- <form id="signup-form" method="post" action="#">
+				<input type="submit" value="Detect Object" />
+			</form> -->
+
+		<!-- Footer -->
+			<!-- <footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer> -->
+
+		<!-- Scripts -->
+			<script src="static/assets/js/main.js"></script>
+			<script src="static/main.js"></script>
+			<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            document.getElementById('latitude').value = position.coords.latitude;
+                            document.getElementById('longitude').value = position.coords.longitude;
+                        }, function(error) {
+                            console.error('Geolocation error: ' + error.message);
+                        });
+                    } else {
+                        console.error('Geolocation is not supported by this browser.');
+                    }
+                });
+            </script>
+
+	</body>
+</html>

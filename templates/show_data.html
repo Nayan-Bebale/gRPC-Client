@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.4/r-3.0.2/datatables.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="p-4 m-3 border rounded shadow">
+
+        <h1>IP Address - Users Data</h1>
+        <div class="table-responsive">
+            <table id="example" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                style="width:100%">
+                <thead>
+                    <tr>
+                        <th>IP Address</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>City</th>
+                        <th>Region</th>
+                        <th>Country</th>
+                        <th>ASN</th>
+                        <th>ASN Description</th>
+                        <th>Subnet</th>
+                        <th>Subnet Mask</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr>
+                        <td>{{item.ip_address}}</td>
+                        <td>{{item.latitude}}</td>
+                        <td>{{item.longitude}}</td>
+                        <td>{{item.city}}</td>
+                        <td>{{item.region}}</td>
+                        <td>{{item.country}}</td>
+                        <td>{{item.asn}}</td>
+                        <td>{{item.asn_description}}</td>
+                        <td>{{item.subnet}}</td>
+                        <td>{{item.subnet_mask}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="p-4 m-3 border rounded shadow">
+        <h1>IP Address - Model's Data</h1>
+        <div class="table-responsive">
+            <table id="example2" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>IP Address</th>
+                        <th>Model ID</th>
+                        <th>Model Name</th>
+                        <th>Accuracy</th>
+                        <th>Latency Time</th>
+                        <th>CPU Usage</th>
+                        <th>Memory Usage</th>
+                        <th>Throughput</th>
+                        <th>Energy Required</th>
+                        <th>Power (Watts)</th>
+                        <th>Response Time</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in models %}
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.ip_address}}</td>
+                        <td>{{item.model_id}}</td>
+                        <td>{{item.model_name}}</td>
+                        <td>{{item.accuracy}}</td>
+                        <td>{{item.latency_time}}</td>
+                        <td>{{item.cpu_usage}}</td>
+                        <td>{{item.memory_usage}}</td>
+                        <td>{{item.throughput}}</td>
+                        <td>{{item.energy_required}}</td>
+                        <td>{{item.power_watts}}</td>
+                        <td>{{item.response_time}}</td>
+                        <td>{{item.timestamp}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.4/r-3.0.2/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                responsive: true,
+                scrollX: true
+            });
+            $('#example2').DataTable({
+                responsive: true,
+                scrollX: true
+            });
+        });
+    </script>
+</body>
+
+</html>

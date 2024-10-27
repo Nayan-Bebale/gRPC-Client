@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.4/r-3.0.2/datatables.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="p-4 m-3 border rounded shadow">
+
+        <h1>IP Address - Users Data</h1>
+        <div class="table-responsive">
+            <table id="example" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                style="width:100%">
+                <thead>
+                    <tr>
+                        <th>IP Address</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Local IP</th>
+                        <th>Service Provider</th>
+                        <th>City</th>
+                        <th>Region</th>
+                        <th>Country</th>
+                        <th>Geo Location Coordinates</th>
+                        <th>ASN</th>
+                        <th>ASN Description</th>
+                        <th>Subnet</th>
+                        <th>Subnet Mask</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr>
+                        <td>{{item.public_ip}}</td>
+                        <td>{{item.latitude}}</td>
+                        <td>{{item.longitude}}</td>
+                        <td>{{item.local_ip}}</td>
+                        <td>{{item.service_provider}}</td>
+                        <td>{{item.city}}</td>
+                        <td>{{item.region}}</td>
+                        <td>{{item.country}}</td>
+                        <td>{{item.geo_location_coordinates}}</td>
+                        <td>{{item.asn}}</td>
+                        <td>{{item.asn_description}}</td>
+                        <td>{{item.subnet}}</td>
+                        <td>{{item.subnet_mask}}</td>
+                        <td>{{item.timestamp}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.1.4/r-3.0.2/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                responsive: true,
+                scrollX: true
+            });
+        });
+    </script>
+</body>
+
+</html>

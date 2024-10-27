@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/static.css">
+    <title>Object Detection</title>
+</head>
+<body>
+    
+    <form action="/detect" method="POST">
+        <h3>{{data.ip}}</h3>
+        <h3>{{data.latitude}}</h3>
+        <h3>{{data.longitude}}</h3>
+        <label for="image_url">Image URL or Path:</label><br>
+        <!-- <input type="text" id="image_url" name="image_url" required><br><br> -->
+
+        <!-- Upload Area -->
+        <div id="uploadArea" class="upload-area">
+            <!-- Header -->
+            <div class="upload-area__header">
+            <h1 class="upload-area__title">Upload your file</h1>
+            <p class="upload-area__paragraph">
+                File should be an image
+                <strong class="upload-area__tooltip">
+                Like
+                <span class="upload-area__tooltip-data"></span> <!-- Data Will be Comes From Js -->
+                </strong>
+            </p>
+            </div>
+            <!-- End Header -->
+        
+            <!-- Drop Zoon -->
+            <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
+            <span class="drop-zoon__icon">
+                <i class='bx bxs-file-image'></i>
+            </span>
+            <p class="drop-zoon__paragraph">Drop your file here or Click to browse</p>
+            <span id="loadingText" class="drop-zoon__loading-text">Please Wait</span>
+            <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image" draggable="false">
+            <input type="file" id="fileInput" class="drop-zoon__file-input" name="image_url" accept="image/*">
+            </div>
+
+            
+            <!-- End Drop Zoon -->
+        
+            <!-- File Details -->
+            <div id="fileDetails" class="upload-area__file-details file-details">
+            <h3 class="file-details__title">Uploaded File</h3>
+        
+            <div id="uploadedFile" class="uploaded-file">
+                <div class="uploaded-file__icon-container">
+                <i class='bx bxs-file-blank uploaded-file__icon'></i>
+                <span class="uploaded-file__icon-text"></span> <!-- Data Will be Comes From Js -->
+                </div>
+        
+                <div id="uploadedFileInfo" class="uploaded-file__info">
+                <span class="uploaded-file__name">Proejct 1</span>
+                <span class="uploaded-file__counter">0%</span>
+                </div>
+            </div>
+            </div>
+            <!-- End File Details -->
+        </div>
+        <!-- End Upload Area -->
+
+        <label for="model">Select Model:</label><br>
+        <select id="model" name="model">
+            <option value="1">fasterrcnn</option>
+            <option value="2">fasterrcnn_mobilenet</option>
+            <option value="3">fasterrcnn_v2</option>
+            <option value="4">maskrcnn</option>
+            <option value="5">maskrcnn_v2</option>
+            <option value="6">keypointrcnn</option>
+            <option value="7">retinanet</option>
+            <option value="8">ssd</option>
+            <option value="9">ssdlite</option>
+            <option value="10">yolov3n</option>
+            <option value="11">yolov5s</option>
+            <option value="12">yolov5l</option>
+            <option value="13">yolov5x</option>
+            <option value="14">yolov6-n</option>
+            <option value="15">yolov6-s</option>
+            <option value="16">yolov6-m</option>
+            <option value="17">yolov6-l</option>
+            <option value="18">yolov6-l6</option>
+            <option value="19">yolov8n</option>
+            <option value="20">yolov8s</option>
+            <option value="21">yolov8m</option>
+            <option value="22">yolov8l</option>
+            <option value="23">yolov8x</option>
+            <option value="24">tf-ssd_mobilenet_v2</option>
+            <option value="25">tf-ssd_mobilenet_v1</option>
+            <option value="26">tf-ssd_resnet50</option>
+            <option value="27">tf-faster_rcnn_resnet50</option>
+            <option value="28">tf-faster_rcnn_inception</option>
+            <option value="29">tf-efficientdet_d0</option>
+            <option value="30">tf-efficientdet_d1</option>
+            <option value="31">tf-efficientdet_d2</option>
+            <option value="32">tf-efficientdet_d3</option>
+            <option value="33">tf-retinanet</option>
+            <option value="34">tf-centernet_hourglass</option>
+            <option value="35">tf-centernet_resnet50</option>
+            <option value="36">tf-mask_rcnn_resnet50</option>
+            <option value="37">tf-mask_rcnn_inception</option>
+            <option value="38">tf-yolo_v4</option>
+        </select><br><br>        
+
+        <button type="submit">Detect Objects</button>
+    </form>
+
+    <script src="static/main.js"></script>
+</body>
+</html>

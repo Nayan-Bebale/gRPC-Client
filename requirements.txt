@@ -1,0 +1,11 @@
+flask
+google-pasta
+grpcio
+psutil
+opencv-python
+numpy
+flask_migrate
+requests
+Pillow
+Flask-SQLAlchemy
+ipwhois
